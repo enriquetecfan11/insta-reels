@@ -1,6 +1,7 @@
 node_modules
 .env
 out
+api/dist
 .cursor
 content/images
 .cursor
