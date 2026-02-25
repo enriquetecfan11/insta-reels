@@ -7,7 +7,7 @@
 
 export const REEL_CONFIG = {
   /** Multiplicador global. Afecta tipografía, tamaños de emoji y espaciados. */
-  scale: 1,
+  scale: 0.85,
 
   /** Tamaños de fuente (px). */
   typography: {

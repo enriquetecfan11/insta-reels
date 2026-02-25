@@ -22,6 +22,15 @@ export function clampLines(text: string, maxLines: number): string {
   return kept.length < text.length ? kept.trimEnd() + "…" : kept;
 }
 
+/** Truncate at last complete word before maxChars to avoid mid-word breaks. */
+function truncateAtWord(text: string, maxChars: number): string {
+  if (text.length <= maxChars) return text;
+  const slice = text.slice(0, maxChars + 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  if (lastSpace <= 0) return text.slice(0, maxChars).trim() + "…";
+  return slice.slice(0, lastSpace).trim() + "…";
+}
+
 export function fitHeadline(headline: string, maxLines: number = 2): TextFitResult {
   const base = TYPOGRAPHY.HEADLINE.fontSize;
   const trimmed = headline.trim();
@@ -34,8 +43,8 @@ export function fitHeadline(headline: string, maxLines: number = 2): TextFitResu
   let displayText = trimmed;
   let fontSize = base;
   if (totalChars > MAX_CHARS_HEADLINE * maxLines) {
-    const targetLen = Math.min(trimmed.length, MAX_CHARS_HEADLINE * maxLines + 6);
-    displayText = trimmed.slice(0, targetLen).trim() + "…";
+    const targetLen = MAX_CHARS_HEADLINE * maxLines + 6;
+    displayText = truncateAtWord(trimmed, targetLen);
     fontSize = Math.round(base * 0.83);
     return { displayText, fontSize, truncated: true };
   }
@@ -53,7 +62,7 @@ export function fitBody(body: string, maxLines?: number): TextFitResult {
   const approxChars = displayText.replace(/\n/g, "").length;
   if (approxChars > MAX_CHARS_BODY_LINE * limit) {
     const maxChars = MAX_CHARS_BODY_LINE * limit - 1;
-    displayText = displayText.slice(0, maxChars).trim() + "…";
+    displayText = truncateAtWord(displayText, maxChars);
     fontSize = Math.round(base * 0.86);
     return { displayText, fontSize, truncated: true };
   }
@@ -84,7 +93,7 @@ export function fitHighlight(text: string, maxLines: number = 3): TextFitResult 
   let displayText = lines.length <= maxLines ? trimmed : lines.slice(0, maxLines).join(" ").trim() + "…";
   let fontSize = base;
   if (displayText.length > 90) {
-    displayText = displayText.slice(0, 87).trim() + "…";
+    displayText = truncateAtWord(displayText, 87);
     fontSize = Math.round(base * 0.83);
     return { displayText, fontSize, truncated: true };
   }

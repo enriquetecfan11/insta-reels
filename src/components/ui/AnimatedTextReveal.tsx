@@ -56,9 +56,11 @@ export const AnimatedTextReveal: React.FC<AnimatedTextRevealProps> = ({
 
   const isLine = mode === "line";
   const isLetter = mode === "letter";
+  // Por palabra/letra/frase: contenedor con textAlign center para que cada línea
+  // que hace wrap quede centrada automáticamente.
   const layoutStyle = isLine
     ? { display: "flex" as const, flexDirection: "column" as const, alignItems: "center" }
-    : { display: "flex" as const, flexWrap: "wrap" as const, flexDirection: "row" as const, justifyContent: "center", gap: isLetter ? "0" : "0.25em" };
+    : { display: "block" as const, textAlign: "center" as const };
 
   return (
     <div style={{ ...layoutStyle, ...containerStyle }}>
@@ -87,6 +89,7 @@ export const AnimatedTextReveal: React.FC<AnimatedTextRevealProps> = ({
               ...segmentStyle,
               display: "inline-block",
               whiteSpace: isLine ? "pre-wrap" : isLetter ? "pre" : "normal",
+              marginRight: isLetter ? 0 : "0.25em",
               ...textStyle,
             }}
           >

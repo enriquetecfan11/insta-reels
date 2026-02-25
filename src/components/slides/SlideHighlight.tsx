@@ -36,6 +36,8 @@ export const SlideHighlight: React.FC<SlideHighlightProps> = ({
     color: THEME.TEXT_PRIMARY,
     lineHeight: 1.45,
     textAlign: "center" as const,
+    wordBreak: "normal" as const,
+    overflowWrap: "normal" as const,
   };
 
   const highlightGradient = `linear-gradient(160deg, ${THEME.HIGHLIGHT_BG[0]} 0%, ${THEME.HIGHLIGHT_BG[1]} 100%)`;
@@ -61,14 +63,28 @@ export const SlideHighlight: React.FC<SlideHighlightProps> = ({
 
       <AnimatedEntranceExit slideDurationSeconds={duration} delay={4}>
         {useStaggeredText ? (
-          <AnimatedTextReveal
-            text={displayText}
-            durationSeconds={duration}
-            mode={animateText}
-            textStyle={highlightTextStyle}
-          />
+          <div style={{ width: "100%", minWidth: 0, maxWidth: "100%", paddingLeft: 24, paddingRight: 24, boxSizing: "border-box" }}>
+            <AnimatedTextReveal
+              text={displayText}
+              durationSeconds={duration}
+              mode={animateText}
+              textStyle={highlightTextStyle}
+            />
+          </div>
         ) : (
-          <div style={{ ...highlightTextStyle, width: "100%" }}>{displayText}</div>
+          <div
+            style={{
+              ...highlightTextStyle,
+              width: "100%",
+              maxWidth: "100%",
+              minWidth: 0,
+              paddingLeft: 24,
+              paddingRight: 24,
+              boxSizing: "border-box",
+            }}
+          >
+            {displayText}
+          </div>
         )}
       </AnimatedEntranceExit>
     </SlideShell>

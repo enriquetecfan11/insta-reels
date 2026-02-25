@@ -35,6 +35,9 @@ export const SlideConcept: React.FC<SlideConceptProps> = ({
           alignItems: "center",
           gap: SPACING.GAP_BODY,
           width: "100%",
+          minWidth: 0,
+          maxWidth: "100%",
+          boxSizing: "border-box",
         }}
       >
         <AnimatedEntranceExit slideDurationSeconds={duration} delay={0}>

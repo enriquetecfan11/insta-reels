@@ -72,7 +72,7 @@ export const SlideVersus: React.FC<SlideVersusProps> = ({
           <div
             style={{
               fontFamily: FONT_FAMILY,
-              fontSize: 44,
+              fontSize: 50,
               fontWeight: 800,
               color: THEME.ACCENT[0],
               opacity: 0.9,

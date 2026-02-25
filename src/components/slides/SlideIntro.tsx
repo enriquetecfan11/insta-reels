@@ -41,13 +41,16 @@ export const SlideIntro: React.FC<SlideIntroProps> = ({
           alignItems: "center",
           gap: SPACING.GAP_HEADER,
           width: "100%",
+          minWidth: 0,
+          maxWidth: "100%",
+          boxSizing: "border-box",
         }}
       >
         <AnimatedEntranceExit slideDurationSeconds={duration} delay={0}>
           <SlideImage emoji={emoji} image={image} size={SIZES.EMOJI_INTRO} />
         </AnimatedEntranceExit>
         <AnimatedEntranceExit slideDurationSeconds={duration} delay={5}>
-          <div style={{ transform: `scale(${scale})`, width: "100%" }}>
+          <div style={{ transform: `scale(${scale})`, width: "100%", minWidth: 0, maxWidth: "100%", textAlign: "center" }}>
             {useStaggeredText ? (
               <AnimatedTextReveal
                 text={displayText}
@@ -56,7 +59,7 @@ export const SlideIntro: React.FC<SlideIntroProps> = ({
                 textStyle={titleTextStyle}
               />
             ) : (
-              <div style={{ ...titleTextStyle, whiteSpace: "pre-line" }}>{displayText}</div>
+              <div style={{ ...titleTextStyle, whiteSpace: "pre-line", wordBreak: "normal", overflowWrap: "normal", maxWidth: "100%", minWidth: 0 }}>{displayText}</div>
             )}
           </div>
         </AnimatedEntranceExit>

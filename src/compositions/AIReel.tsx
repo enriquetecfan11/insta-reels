@@ -7,8 +7,8 @@ import type { TransitionPresentation } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { wipe } from "@remotion/transitions/wipe";
 import { slide } from "@remotion/transitions/slide";
-import { useVideoConfig } from "remotion";
-import { DESIGN } from "../utils/constants";
+import { AbsoluteFill, useVideoConfig } from "remotion";
+import { DESIGN, FONT_FAMILY } from "../utils/constants";
 import type { ReelContent, Slide, SlideTransition } from "../utils/types";
 import { SlideIntro } from "../components/slides/SlideIntro";
 import { SlideConcept } from "../components/slides/SlideConcept";
@@ -97,5 +97,29 @@ export const AIReel: React.FC<ReelContent> = (props) => {
     }
   });
 
-  return <TransitionSeries>{elements}</TransitionSeries>;
+  return (
+    <AbsoluteFill>
+      <TransitionSeries>{elements}</TransitionSeries>
+      <AbsoluteFill
+        style={{
+          justifyContent: "flex-end",
+          alignItems: "center",
+          paddingBottom: 32,
+          pointerEvents: "none",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: FONT_FAMILY,
+            fontSize: 35,
+            fontWeight: 600,
+            color: "rgba(190, 190, 190, 0.19)",
+            letterSpacing: "0.02em",
+          }}
+        >
+          enriquetecfan
+        </span>
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
 };

@@ -23,9 +23,13 @@ export const SlideBody: React.FC<SlideBodyProps> = ({
         lineHeight: TYPOGRAPHY.BODY.lineHeight,
         color: THEME.TEXT_SECONDARY,
         maxWidth: "100%",
+        minWidth: 0,
         textAlign: center ? "center" : "left",
         width: "100%",
         whiteSpace: "pre-line",
+        overflowWrap: "normal",
+        wordBreak: "normal",
+        boxSizing: "border-box",
       }}
     >
       {children}

@@ -17,7 +17,6 @@ export const THEME = {
   TEXT_PRIMARY: "#ffffff",
   TEXT_SECONDARY: "#e2e8f0",
   TEXT_MUTED: "#94a3b8",
-  /** Minimum contrast (AA): text on dark bg. */
   CONTRAST_MIN: 4.5,
 } as const;
 

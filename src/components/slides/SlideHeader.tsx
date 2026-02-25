@@ -43,6 +43,9 @@ export const SlideHeader: React.FC<SlideHeaderProps> = ({
           textAlign: center ? "center" : "left",
           width: "100%",
           maxWidth: "100%",
+          minWidth: 0,
+          overflowWrap: "normal",
+          wordBreak: "normal",
         }}
       >
         {headline}
