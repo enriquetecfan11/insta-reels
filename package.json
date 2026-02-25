@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "remotion studio",
-    "render": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json"
+    "render": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json",
+    "api": "tsx src/api/index.ts"
   },
   "dependencies": {
     "@remotion/animated-emoji": "4.0.429",
@@ -16,9 +17,14 @@
     "@remotion/transitions": "4.0.429",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remotion": "4.0.429"
+    "remotion": "4.0.429",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.2.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "tsx": "^4.0.0",
