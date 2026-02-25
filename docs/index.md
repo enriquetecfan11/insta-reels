@@ -6,8 +6,9 @@ Proyecto de generación de **reels para Instagram** (1080×1920, 9:16) con [Remo
 
 | Documento | Descripción |
 |-----------|-------------|
-| [CREAR_VIDEOS.md](../CREAR_VIDEOS.md) | Cómo crear y editar vídeos (estructura JSON, tipos de slide, comandos). |
-| [LLM_ESPECIFICACION_VIDEOS.md](../LLM_ESPECIFICACION_VIDEOS.md) | Especificación para que un LLM genere el JSON de un reel. |
+| [CREAR_VIDEOS.md](setup/CREAR_VIDEOS.md) | Cómo crear y editar vídeos (estructura JSON, tipos de slide, comandos). |
+| [LLM_ESPECIFICACION_VIDEOS.md](setup/LLM_ESPECIFICACION_VIDEOS.md) | Especificación para que un LLM genere el JSON de un reel. |
+| [reference/API.md](reference/API.md) | API HTTP: endpoints, configuración, jobs y descarga de MP4. |
 | [features/index.md](features/index.md) | Índice de funcionalidades documentadas (Spec-Driven Design). |
 
 ## Estructura del repositorio
@@ -37,5 +38,6 @@ Proyecto de generación de **reels para Instagram** (1080×1920, 9:16) con [Remo
 - **`npm run studio`** — Abrir Remotion Studio para previsualizar y editar.
 - **`npm run render`** — Renderizar el vídeo por defecto (demo).
 - **`npm run render-all`** — Renderizar todos los JSON de `content/` a `out/`.
+- **`npm run api`** — Levantar la API HTTP (Express) para renders remotos. Por defecto en `http://localhost:3000`. Ver [reference/API.md](reference/API.md) para endpoints, configuración y flujo completo.
 
-Para más detalle, ver [CREAR_VIDEOS.md](../CREAR_VIDEOS.md).
+Para más detalle: [CREAR_VIDEOS.md](setup/CREAR_VIDEOS.md) (vídeos), [reference/API.md](reference/API.md) (API).
