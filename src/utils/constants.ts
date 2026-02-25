@@ -26,18 +26,10 @@ export const DESIGN = {
   HEIGHT: 1920,
   FPS: 30,
   PADDING_H: SPACING.MARGIN_H,
-  /** Safe area top for Instagram overlays. */
   SAFE_TOP: SPACING.SAFE_TOP,
-  /** Safe area bottom for Instagram overlays. */
   SAFE_BOTTOM: SPACING.SAFE_BOTTOM,
-  /** Content vertical offset (negative = move content up from center). */
   CONTENT_OFFSET_TOP: SPACING.CONTENT_OFFSET_TOP,
   TRANSITION_FRAMES: 8,
   ACCENT_BAR_HEIGHT: 8,
-  /**
-   * Use @remotion/animated-emoji for 🤖🛠️✨ etc.
-   * Set to true only after copying emoji videos to public/ (see remotion-dev/animated-emoji).
-   * When false, emojis render as static text (avoids browser errors in Studio).
-   */
   USE_ANIMATED_EMOJI: false,
 } as const;

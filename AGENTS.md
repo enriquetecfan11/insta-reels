@@ -20,8 +20,8 @@ Este documento define convenciones y flujos de trabajo para agentes y desarrolla
 
 ## Documentación de referencia
 
-- **Crear/editar vídeos:** [CREAR_VIDEOS.md](CREAR_VIDEOS.md) — Estructura JSON, tipos de slide (intro, concept, highlight, outro), comandos.
-- **Especificación para LLMs:** [LLM_ESPECIFICACION_VIDEOS.md](LLM_ESPECIFICACION_VIDEOS.md) — Formato JSON que debe producir un LLM al generar un reel.
+- **Crear/editar vídeos:** [CREAR_VIDEOS.md](docs/setup/CREAR_VIDEOS.md) — Estructura JSON, tipos de slide (intro, concept, highlight, versus, outro), opciones `animateText`, `videoBackground`, `ctaCommentKeyword`, comandos.
+- **Especificación para LLMs:** [LLM_ESPECIFICACION_VIDEOS.md](docs/setup/LLM_ESPECIFICACION_VIDEOS.md) — Formato JSON que debe producir un LLM al generar un reel.
 - **Índice general:** [docs/index.md](docs/index.md) — Entrada a toda la documentación.
 - **Features (SDD):** [docs/features/index.md](docs/features/index.md) — Índice de funcionalidades especificadas.
 

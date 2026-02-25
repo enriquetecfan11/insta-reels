@@ -2,7 +2,7 @@
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
-  <img src="https://img.shields.io/badge/version-0.1.0-green.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-0.2.0-green.svg" alt="Version">
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build">
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs">
 </div>
@@ -23,9 +23,12 @@
 
 - **JSON-driven videos** — Each reel is a single JSON file in `content/` (`id` + `slides`). Add new videos without touching code.
 - **Instagram-ready layout** — Safe areas for overlays (top/bottom), 1080×1920 px, 30 fps, MP4 output in `out/`.
-- **Four slide types** — Intro (title + emoji/image), Concept (headline + body), Highlight (quote), Outro (CTA). Multi-line body text with `\n`.
+- **Five slide types** — Intro (title + emoji/image), Concept (headline + body), Highlight (quote), **Versus** (comparison left vs right), Outro (CTA). Multi-line body text with `\n`.
+- **Animated text reveal** — Optional `animateText` per slide: `"letter"` (typewriter), `"word"`, `"line"`, `"phrase"`, or `"block"`. Spring bounce on entrances.
+- **B-roll / video background** — Optional `videoBackground` (path in `public/`) on any slide; clip plays behind the gradient.
+- **CTA with keyword** — Optional `ctaCommentKeyword` on outro to highlight the word to comment for engagement.
 - **Central config** — Typography, sizes, and spacing in `src/config/reelConfig.ts`; tune once, apply everywhere.
-- **Transitions & backgrounds** — Per-slide options: transitions (`crossfade`, `wipe`, `push`) and backgrounds (`default`, `deep`, `glow`).
+- **Transitions & backgrounds** — Per-slide: transitions (`crossfade`, `wipe`, `push`) and backgrounds (`default`, `deep`, `glow`). Moving gradient; drop-shadow on icons; loop-friendly exits.
 - **Validation** — Missing fields get defaults and a console warning; renders don’t fail.
 - **Remotion Studio** — Preview and tweak before rendering.
 - **Batch render** — `npm run render-all` to render every JSON in `content/` to `out/`.

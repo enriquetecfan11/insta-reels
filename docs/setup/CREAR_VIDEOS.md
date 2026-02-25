@@ -48,6 +48,8 @@ Diapositiva de apertura con título (y opcionalmente emoji o imagen).
 | `image`  | No          | Ruta a una imagen (relativa a `public/`), ej: `"images/robot.png"`. Se muestra en círculo. |
 | `transition` | No       | Transición hacia la siguiente slide: `"crossfade"`, `"wipe"`, `"push"`. Por defecto: crossfade. |
 | `background` | No       | Fondo de la slide: `"default"`, `"deep"`, `"glow"`. Por defecto: default. |
+| `animateText` | No      | Revelado del título: `"letter"` (letra a letra), `"word"`, `"line"`, `"phrase"`, `"block"`. Si se omite, el texto aparece en bloque. |
+| `videoBackground` | No   | Ruta a un vídeo en `public/` (ej: `"videos/clip.mp4"`). Se reproduce detrás del gradiente. |
 
 ---
 
@@ -74,6 +76,8 @@ Diapositiva con titular y cuerpo de texto.
 | `image`    | No          | Ruta a imagen en `public/` (se muestra en círculo). |
 | `transition` | No        | Transición hacia la siguiente: `"crossfade"`, `"wipe"`, `"push"`. |
 | `background` | No        | Fondo: `"default"`, `"deep"`, `"glow"`. |
+| `animateText` | No       | Revelado del headline/body: `"letter"`, `"word"`, `"line"`, `"phrase"`, `"block"`. |
+| `videoBackground` | No    | Ruta a un vídeo en `public/` para B-roll detrás del gradiente. |
 
 ---
 
@@ -95,6 +99,8 @@ Diapositiva de frase destacada (cita o idea clave).
 | `duration` | Sí        | Duración en segundos. |
 | `transition` | No       | Transición hacia la siguiente: `"crossfade"`, `"wipe"`, `"push"`. |
 | `background` | No       | Fondo: `"default"`, `"deep"`, `"glow"`. |
+| `animateText` | No      | Revelado de la frase: `"letter"`, `"word"`, `"line"`, `"phrase"`, `"block"`. |
+| `videoBackground` | No   | Ruta a un vídeo en `public/` para B-roll. |
 
 ---
 
@@ -126,6 +132,7 @@ Diapositiva de comparación lado a lado (ej: Chatbot vs Agente).
 | `duration`    | Sí          | Duración en segundos. |
 | `transition`  | No          | Transición: `"crossfade"`, `"wipe"`, `"push"`. |
 | `background`  | No          | Fondo: `"default"`, `"deep"`, `"glow"`. |
+| `videoBackground` | No       | Ruta a un vídeo en `public/` para B-roll. |
 
 ---
 
@@ -146,6 +153,8 @@ Diapositiva de cierre con llamada a la acción.
 | `cta`     | Sí          | Texto de la llamada a la acción (ej: seguir, comentar). |
 | `duration` | Sí        | Duración en segundos. |
 | `background` | No       | Fondo: `"default"`, `"deep"`, `"glow"`. |
+| `ctaCommentKeyword` | No | Palabra que quieres que el usuario comente (ej: `"AGENTE"`). Se resalta en pill con color accent para aumentar engagement. |
+| `videoBackground` | No   | Ruta a un vídeo en `public/` para B-roll. |
 
 ---
 
@@ -211,7 +220,7 @@ Cada JSON se valida al cargar (en Studio y al renderizar). Si falta un campo obl
 
 - Se muestra un **warning en consola**.
 - Se usan **valores por defecto** (ej: título "Título", duration 2.5) para que el render no falle.
-- Los tipos de slide deben ser exactamente: `intro`, `concept`, `highlight`, `outro`.
+- Los tipos de slide deben ser exactamente: `intro`, `concept`, `highlight`, `versus`, `outro`.
 - Las transiciones opcionales deben ser: `crossfade`, `wipe`, `push`.
 - Los fondos opcionales deben ser: `default`, `deep`, `glow`.
 
@@ -261,7 +270,7 @@ npm run render-all
 
 ## 7. Resumen rápido
 
-1. **Crear un vídeo nuevo:** Añade un JSON en `content/` con `id` y `slides` (intro, concept, highlight, outro). El body puede tener varias líneas con `\n`. Para ritmo fluido tipo Reels/TikTok, usa duraciones de 2–2,5 s por slide. Opcional: `transition` y `background` por slide.
+1. **Crear un vídeo nuevo:** Añade un JSON en `content/` con `id` y `slides` (intro, concept, highlight, versus, outro). El body puede tener varias líneas con `\n`. Para ritmo fluido tipo Reels/TikTok, usa duraciones de 2–2,5 s por slide. Opcional: `transition`, `background`, `animateText` (letter/word/line/phrase/block), `videoBackground`, y en outro `ctaCommentKeyword`.
 2. **Cambiar tamaños:** Edita `src/config/reelConfig.ts` (tipografía, sizes, spacing, `bodyMaxLines`, `scale`).
 3. **Previsualizar:** `npm run studio` y elige la composición cuyo id coincida con tu `id`.
 4. **Un vídeo:** `npx remotion render <id> --props=content/TU-ARCHIVO.json` (el `<id>` es el del JSON).

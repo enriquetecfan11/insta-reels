@@ -4,9 +4,12 @@ Este documento define el formato JSON que debes producir cuando te pidan crear u
 
 **Resumen del sistema:**
 
-- **Tipos de slide:** solo `intro`, `concept`, `highlight`, `outro`. Cada slide tiene `duration` (segundos).
+- **Tipos de slide:** `intro`, `concept`, `highlight`, `versus`, `outro`. Cada slide tiene `duration` (segundos).
 - **Body con varias líneas:** en slides `concept`, el campo `body` puede tener varias líneas usando `\n`. El proyecto limita el número de líneas (por defecto 4) y aplica ajustes automáticos si el texto es muy largo.
-- **Opcionales por slide:** `transition` (transición hacia la siguiente: `crossfade`, `wipe`, `push`) y `background` (fondo: `default`, `deep`, `glow`). Si se omiten, se usan valores por defecto.
+- **Revelado de texto:** en intro, concept y highlight se puede usar `animateText`: `"letter"` (letra a letra), `"word"`, `"line"`, `"phrase"`, `"block"`. Opcional.
+- **B-roll:** en cualquier slide, `videoBackground` con ruta a un vídeo en `public/` (ej: `"videos/clip.mp4"`). Opcional.
+- **CTA con palabra clave:** en outro, `ctaCommentKeyword` (ej: `"AGENTE"`) para resaltar la palabra que el usuario debe comentar. Opcional.
+- **Opcionales por slide:** `transition` (`crossfade`, `wipe`, `push`), `background` (`default`, `deep`, `glow`). Si se omiten, se usan valores por defecto.
 - **Validación:** si falta un campo obligatorio, el proyecto usa valores por defecto y muestra un warning; el render no falla.
 
 ---
@@ -30,7 +33,7 @@ El JSON tiene exactamente dos propiedades de primer nivel:
 
 ## Tipos de diapositivas
 
-Solo existen cuatro tipos. El campo `type` debe ser exactamente una de estas cadenas: `"intro"`, `"concept"`, `"highlight"`, `"outro"`.
+Existen cinco tipos. El campo `type` debe ser exactamente una de estas cadenas: `"intro"`, `"concept"`, `"highlight"`, `"versus"`, `"outro"`.
 
 ### 1. Intro (`"type": "intro"`)
 
@@ -47,6 +50,8 @@ Primera diapositiva: presenta el tema del reel.
 | `image`   | string | No          | Ruta relativa a `public/` (ej: `"images/robot.png"`). Solo si existe; si no, omitir. |
 | `transition` | string | No       | Transición hacia la siguiente slide: `"crossfade"`, `"wipe"`, `"push"`. Opcional. |
 | `background` | string | No       | Fondo: `"default"`, `"deep"`, `"glow"`. Opcional. |
+| `animateText` | string | No      | Revelado del título: `"letter"`, `"word"`, `"line"`, `"phrase"`, `"block"`. Opcional. |
+| `videoBackground` | string | No   | Ruta a un vídeo en `public/` (ej: `"videos/clip.mp4"`). B-roll detrás del gradiente. Opcional. |
 
 **Ejemplo:**
 
@@ -77,6 +82,8 @@ Diapositiva de concepto: titular corto + cuerpo de texto.
 | `image`    | string | No          | Ruta en `public/`; omitir si no hay imagen. |
 | `transition` | string | No        | Transición hacia la siguiente: `"crossfade"`, `"wipe"`, `"push"`. Opcional. |
 | `background` | string | No        | Fondo: `"default"`, `"deep"`, `"glow"`. Opcional. |
+| `animateText` | string | No       | Revelado: `"letter"`, `"word"`, `"line"`, `"phrase"`, `"block"`. Opcional. |
+| `videoBackground` | string | No    | Ruta a vídeo en `public/`. Opcional. |
 
 **Ejemplo:**
 
@@ -105,6 +112,8 @@ Diapositiva de frase destacada (cita o idea clave).
 | `duration` | number | Sí          | Duración en segundos (típico: 2.5–3). |
 | `transition` | string | No        | Transición hacia la siguiente: `"crossfade"`, `"wipe"`, `"push"`. Opcional. |
 | `background` | string | No        | Fondo: `"default"`, `"deep"`, `"glow"`. Opcional. |
+| `animateText` | string | No      | Revelado: `"letter"`, `"word"`, `"line"`, `"phrase"`, `"block"`. Opcional. |
+| `videoBackground` | string | No   | Ruta a vídeo en `public/`. Opcional. |
 
 **Ejemplo:**
 
@@ -118,7 +127,44 @@ Diapositiva de frase destacada (cita o idea clave).
 
 ---
 
-### 4. Outro (`"type": "outro"`)
+### 4. Versus (`"type": "versus"`)
+
+Diapositiva de comparación lado a lado (ej: Chatbot vs Agente). Los elementos entran escalonados: izquierda → "VS" → derecha.
+
+**Campos:**
+
+| Campo         | Tipo   | Obligatorio | Descripción |
+|---------------|--------|-------------|-------------|
+| `type`        | string | Sí          | Literal `"versus"`. |
+| `leftLabel`   | string | Sí          | Etiqueta del lado izquierdo. |
+| `leftEmoji`   | string | Sí          | Emoji del lado izquierdo. |
+| `leftSubtext` | string | Sí          | Subtexto del lado izquierdo. |
+| `rightLabel`  | string | Sí          | Etiqueta del lado derecho. |
+| `rightEmoji`  | string | Sí          | Emoji del lado derecho. |
+| `rightSubtext`| string | Sí          | Subtexto del lado derecho. |
+| `duration`    | number | Sí          | Duración en segundos (típico: 3). |
+| `transition`  | string | No          | `"crossfade"`, `"wipe"`, `"push"`. Opcional. |
+| `background`  | string | No          | `"default"`, `"deep"`, `"glow"`. Opcional. |
+| `videoBackground` | string | No       | Ruta a vídeo en `public/`. Opcional. |
+
+**Ejemplo:**
+
+```json
+{
+  "type": "versus",
+  "leftLabel": "Chatbot",
+  "leftEmoji": "💬",
+  "leftSubtext": "Solo habla",
+  "rightLabel": "Agente",
+  "rightEmoji": "🛠️",
+  "rightSubtext": "Hace el trabajo",
+  "duration": 3
+}
+```
+
+---
+
+### 5. Outro (`"type": "outro"`)
 
 Última diapositiva: cierre y llamada a la acción (seguir, comentar, etc.).
 
@@ -130,6 +176,8 @@ Diapositiva de frase destacada (cita o idea clave).
 | `cta`      | string | Sí          | Texto de la llamada a la acción (puede incluir emoji, ej: "Sígueme para más 👇"). |
 | `duration` | number | Sí          | Duración en segundos (típico: 2). |
 | `background` | string | No        | Fondo: `"default"`, `"deep"`, `"glow"`. Opcional. |
+| `ctaCommentKeyword` | string | No   | Palabra que el usuario debe comentar (ej: "AGENTE"); se resalta en la UI. Opcional. |
+| `videoBackground` | string | No    | Ruta a vídeo en `public/`. Opcional. |
 
 **Ejemplo:**
 
@@ -145,7 +193,7 @@ Diapositiva de frase destacada (cita o idea clave).
 
 ## Reglas al generar el JSON
 
-1. **Orden de slides:** La primera debe ser `intro`, la última `outro`. Entre medias, alternar o combinar `concept` y `highlight` según el guion.
+1. **Orden de slides:** La primera debe ser `intro`, la última `outro`. Entre medias, alternar o combinar `concept`, `highlight` y `versus` según el guion.
 2. **Duración:** Valores numéricos en segundos. Típicos: intro 2–2.5, concept/highlight 2.5–3.5, outro 2. No usar decimales raros; 2.5 y 3 son suficientes.
 3. **`id`:** Sin espacios, sin mayúsculas. Formato recomendado: `NNN-slug-del-tema` (ej: `004-prompt-engineering`). Se usa como nombre del archivo de vídeo (`<id>.mp4`).
 4. **Textos:** Breves y legibles. En `body` (concept) se permiten **varias líneas** con `\n`; no hace falta limitarse a una o dos frases si el guion pide más (el proyecto limita y ajusta automáticamente). En `text` (highlight) y `cta` (outro), mantener conciso.
@@ -153,6 +201,9 @@ Diapositiva de frase destacada (cita o idea clave).
 6. **Emojis:** Opcionales pero recomendables en intro y concept. Uno por slide; se muestran en un círculo.
 7. **`image`:** Incluir solo si el usuario indica que hay una imagen en `public/`; si no, omitir.
 8. **`transition` y `background`:** Opcionales. Valores válidos: `transition` = `"crossfade"` | `"wipe"` | `"push"`; `background` = `"default"` | `"deep"` | `"glow"`. Omitir si no se quiere personalizar.
+9. **`animateText`:** Opcional en intro, concept y highlight. Valores: `"letter"` | `"word"` | `"line"` | `"phrase"` | `"block"`. Omitir para revelado en bloque.
+10. **`videoBackground`:** Opcional en cualquier slide. Ruta relativa a `public/` (ej: `"videos/clip.mp4"`). El clip se reproduce detrás del gradiente.
+11. **`ctaCommentKeyword`:** Solo en outro. Palabra que quieres que el usuario comente; se resalta en la interfaz. Opcional.
 
 ---
 
@@ -203,8 +254,8 @@ Un reel de 5 diapositivas: intro → dos conceptos → highlight → outro.
 ## Resumen para el LLM
 
 - **Salida:** Un único objeto JSON con `id` y `slides`.
-- **`slides`:** Array de objetos; cada uno tiene `type` (`"intro"` | `"concept"` | `"highlight"` | `"outro"`) y los campos indicados para ese tipo. Todos tienen `duration` (number, segundos). Opcionales en cualquier slide: `transition` (`"crossfade"` | `"wipe"` | `"push"`), `background` (`"default"` | `"deep"` | `"glow"`).
-- **Orden:** intro → [concept | highlight]* → outro.
+- **`slides`:** Array de objetos; cada uno tiene `type` (`"intro"` | `"concept"` | `"highlight"` | `"versus"` | `"outro"`) y los campos indicados para ese tipo. Todos tienen `duration` (number, segundos). Opcionales: `transition`, `background`, `animateText` (intro/concept/highlight), `videoBackground` (cualquier slide), `ctaCommentKeyword` (outro).
+- **Orden:** intro → [concept | highlight | versus]* → outro.
 - **Textos:** Cortos y claros, sin markdown. Saltos de línea con `\n` en `title` (intro) y en `body` (concept); el body puede tener varias líneas.
 - **`id`:** Identificador en minúsculas y guiones; se usa como nombre del archivo de vídeo (`<id>.mp4`).
 - **Validación:** Si falta un campo obligatorio, el proyecto usa valores por defecto y muestra un warning; el JSON debe respetar los tipos y valores indicados para no depender de fallbacks.

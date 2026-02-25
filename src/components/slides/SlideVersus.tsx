@@ -43,6 +43,11 @@ export const SlideVersus: React.FC<SlideVersusProps> = ({
     textAlign: "center",
   };
 
+  /* Escalonado: izquierda → VS → derecha (en frames, 30 fps) */
+  const delayLeft = 0;
+  const delayVs = 18;
+  const delayRight = 36;
+
   return (
     <SlideShell variant={background} videoBackground={videoBackground}>
       <div
@@ -55,7 +60,7 @@ export const SlideVersus: React.FC<SlideVersusProps> = ({
           width: "100%",
         }}
       >
-        <AnimatedEntranceExit slideDurationSeconds={duration} delay={0}>
+        <AnimatedEntranceExit slideDurationSeconds={duration} delay={delayLeft}>
           <div style={columnStyle}>
             <span style={{ fontSize: VERSUS_EMOJI_SIZE, lineHeight: 1 }}>{leftEmoji}</span>
             <div style={labelStyle}>{leftLabel}</div>
@@ -63,20 +68,22 @@ export const SlideVersus: React.FC<SlideVersusProps> = ({
           </div>
         </AnimatedEntranceExit>
 
-        <div
-          style={{
-            fontFamily: FONT_FAMILY,
-            fontSize: 44,
-            fontWeight: 800,
-            color: THEME.ACCENT[0],
-            opacity: 0.9,
-            flexShrink: 0,
-          }}
-        >
-          VS
-        </div>
+        <AnimatedEntranceExit slideDurationSeconds={duration} delay={delayVs}>
+          <div
+            style={{
+              fontFamily: FONT_FAMILY,
+              fontSize: 44,
+              fontWeight: 800,
+              color: THEME.ACCENT[0],
+              opacity: 0.9,
+              flexShrink: 0,
+            }}
+          >
+            VS
+          </div>
+        </AnimatedEntranceExit>
 
-        <AnimatedEntranceExit slideDurationSeconds={duration} delay={8}>
+        <AnimatedEntranceExit slideDurationSeconds={duration} delay={delayRight}>
           <div style={columnStyle}>
             <span style={{ fontSize: VERSUS_EMOJI_SIZE, lineHeight: 1 }}>{rightEmoji}</span>
             <div style={labelStyle}>{rightLabel}</div>

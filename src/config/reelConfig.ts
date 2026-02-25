@@ -11,11 +11,11 @@ export const REEL_CONFIG = {
 
   /** Tamaños de fuente (px). */
   typography: {
-    title: 128,
-    headline: 100,
-    body: 70,
-    cta: 70,
-    highlight: 100,
+    title: 80 ,
+    headline: 70,
+    body: 56,
+    cta: 56,
+    highlight: 70,
     /** Número máximo de líneas del body (concept slides). */
     bodyMaxLines: 4,
   },
