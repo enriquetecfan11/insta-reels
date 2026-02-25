@@ -2,10 +2,8 @@
   "name": "insta-reels",
   "version": "0.1.0",
   "scripts": {
-    "studio": "remotion studio",
-    "render": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json",
-    "render-demo": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json",
-    "render-all": "tsx scripts/render-all.ts"
+    "dev": "remotion studio",
+    "render": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json"
   },
   "dependencies": {
     "@remotion/animated-emoji": "4.0.429",
