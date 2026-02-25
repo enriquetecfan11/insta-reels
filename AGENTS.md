@@ -15,14 +15,16 @@ Este documento define convenciones y flujos de trabajo para agentes y desarrolla
 | `content/*.json` | Definición de cada reel (id, slides con type, duration, textos). |
 | `out/` | Vídeos MP4 generados. |
 | `src/` | Código Remotion: composiciones, UI, config (`reelConfig.ts`), tipos y validación. |
+| `src/api/` | API HTTP: Express, rutas (`health`, `content`, `render`), cola de jobs y worker. |
 | `scripts/` | Scripts de automatización (p. ej. `render-all.ts`). |
-| `docs/` | Documentación (índice en `docs/index.md`, features en `docs/features/`). |
+| `docs/` | Documentación (índice en `docs/index.md`, API en `docs/reference/API.md`, features en `docs/features/`). |
 
 ## Documentación de referencia
 
 - **Crear/editar vídeos:** [CREAR_VIDEOS.md](docs/setup/CREAR_VIDEOS.md) — Estructura JSON, tipos de slide (intro, concept, highlight, versus, outro), opciones `animateText`, `videoBackground`, `ctaCommentKeyword`, comandos.
 - **Especificación para LLMs:** [LLM_ESPECIFICACION_VIDEOS.md](docs/setup/LLM_ESPECIFICACION_VIDEOS.md) — Formato JSON que debe producir un LLM al generar un reel.
 - **Índice general:** [docs/index.md](docs/index.md) — Entrada a toda la documentación.
+- **API HTTP:** [docs/reference/API.md](docs/reference/API.md) — Endpoints, configuración, jobs y seguridad.
 - **Features (SDD):** [docs/features/index.md](docs/features/index.md) — Índice de funcionalidades especificadas.
 
 ## Spec-Driven Design (SDD)
@@ -41,6 +43,7 @@ Las features se nombran en **PascalCase** en los archivos (ej: `docs/features/Us
 - `npm run studio` — Abrir Remotion Studio (previsualizar y probar).
 - `npm run render` — Renderizar el vídeo por defecto.
 - `npm run render-all` — Renderizar todos los JSON de `content/` a `out/`.
+- `npm run api` — Levantar la API HTTP para renders remotos (por defecto en el puerto 3000). Ver [docs/reference/API.md](docs/reference/API.md).
 
 Para renderizar un vídeo concreto:  
 `npx remotion render <id> --props=content/<archivo>.json`  

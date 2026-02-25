@@ -4,6 +4,11 @@ Todos los cambios notables del proyecto se documentan en este archivo. Formato b
 
 ## [Unreleased]
 
+### Added
+
+- **API HTTP** para uso remoto de Remotion: servidor Express en el mismo proyecto (`npm run api`). Endpoints: `GET /health`, `GET /content`, `POST /render` (body: `{ contentId }` o ReelContent), `GET /jobs/:jobId`, `GET /output/:id`. Cola de trabajos en memoria (estados: pending, rendering, completed, failed); un worker procesa jobs sin bloquear el servidor. Seguridad mínima: rate limit (express-rate-limit), límite de tamaño de body JSON y CORS configurable (por defecto abierto en dev). Variables de entorno: `PORT`, `CORS_ORIGIN`, `RATE_LIMIT_MAX`, `JSON_LIMIT`.
+- **Documentación de la API:** referencia completa en `docs/reference/API.md` (endpoints, ejemplos, estados de jobs, configuración, seguridad y estructura del código). Enlaces desde `docs/index.md`, `docs/reference/README.md`, `AGENTS.md` y `README.md`.
+
 - (Ver [0.2.0] para las últimas novedades.)
 
 ---

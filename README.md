@@ -32,6 +32,7 @@
 - **Validation** — Missing fields get defaults and a console warning; renders don’t fail.
 - **Remotion Studio** — Preview and tweak before rendering.
 - **Batch render** — `npm run render-all` to render every JSON in `content/` to `out/`.
+- **HTTP API** — `npm run api` for remote renders: list content, enqueue jobs, poll status, download MP4. In-memory job queue; rate limit, CORS and body size configurable (see [docs/reference/API.md](docs/reference/API.md)).
 - **Spec-Driven Design** — Project docs in `docs/` with feature specs and conventions (see [AGENTS.md](AGENTS.md)).
 
 ## 🛠️ Tech Stack
@@ -49,10 +50,12 @@ npm install
 npm run studio    # Preview in browser
 npm run render    # Render default video
 npm run render-all # Render all JSONs in content/ → out/
+npm run api       # HTTP API for remote renders (default http://localhost:3000)
 ```
 
 - **New video:** Add `content/NNN-your-topic.json` (see [CREAR_VIDEOS.md](CREAR_VIDEOS.md) for JSON structure).
 - **Single render:** `npx remotion render <id> --props=content/<file>.json` → `out/<id>.mp4`.
+- **HTTP API:** See [docs/reference/API.md](docs/reference/API.md) for full reference (endpoints, env vars, job flow).
 
 ## 📚 Documentation
 
@@ -60,6 +63,7 @@ npm run render-all # Render all JSONs in content/ → out/
 |-----|-------------|
 | [CREAR_VIDEOS.md](CREAR_VIDEOS.md) | How to create and edit videos (JSON structure, slide types, commands). |
 | [LLM_ESPECIFICACION_VIDEOS.md](LLM_ESPECIFICACION_VIDEOS.md) | JSON spec for LLMs to generate reel content. |
+| [docs/reference/API.md](docs/reference/API.md) | HTTP API reference: endpoints, env vars, job states, security. |
 | [docs/index.md](docs/index.md) | Full documentation index (architecture, setup, troubleshooting). |
 | [AGENTS.md](AGENTS.md) | Repo conventions and Spec-Driven Design workflow. |
 
