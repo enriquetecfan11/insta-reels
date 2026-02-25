@@ -1,0 +1,29 @@
+{
+  "name": "insta-reels",
+  "version": "0.1.0",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json",
+    "render-demo": "remotion render 003-que-es-un-agente-ia --props=content/003-que-agente-ia.json",
+    "render-all": "tsx scripts/render-all.ts"
+  },
+  "dependencies": {
+    "@remotion/animated-emoji": "4.0.429",
+    "@remotion/animation-utils": "4.0.429",
+    "@remotion/bundler": "4.0.429",
+    "@remotion/cli": "4.0.429",
+    "@remotion/google-fonts": "4.0.429",
+    "@remotion/mcp": "4.0.429",
+    "@remotion/renderer": "4.0.429",
+    "@remotion/transitions": "4.0.429",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "remotion": "4.0.429"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "002-prompt-engineering",
+  "slides": [
+    {
+      "type": "intro",
+      "emoji": "✍️",
+      "title": "Prompt Engineering:\ncómo hablarle a la IA",
+      "duration": 2.5
+    },
+    {
+      "type": "concept",
+      "emoji": "🎯",
+      "headline": "Sé específico",
+      "body": "Cuanto más detalle das, mejor respuesta obtienes. El contexto es clave.",
+      "duration": 3
+    },
+    {
+      "type": "concept",
+      "emoji": "🎭",
+      "headline": "Dale un rol",
+      "body": "\"Actúa como un experto en marketing…\" mejora drásticamente los resultados.",
+      "duration": 3
+    },
+    {
+      "type": "highlight",
+      "text": "Un buen prompt es como una buena pregunta: define el problema antes de pedir solución",
+      "duration": 3
+    },
+    {
+      "type": "concept",
+      "emoji": "🔁",
+      "headline": "Itera y mejora",
+      "body": "El primer prompt rara vez es perfecto. Refina hasta obtener lo que necesitas.",
+      "duration": 3
+    },
+    {
+      "type": "outro",
+      "cta": "¿Quieres más tips de IA? Sígueme 👇",
+      "duration": 2
+    }
+  ]
+}

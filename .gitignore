@@ -1,0 +1,7 @@
+node_modules
+.env
+out
+.cursor
+content/images
+.cursor
+content

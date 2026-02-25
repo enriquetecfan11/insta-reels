@@ -1,0 +1,35 @@
+{
+  "id": "001-que-es-ia",
+  "slides": [
+    {
+      "type": "intro",
+      "emoji": "🤖",
+      "title": "¿Qué es la\nInteligencia Artificial?",
+      "duration": 2.5
+    },
+    {
+      "type": "concept",
+      "emoji": "🧠",
+      "headline": "Aprende de datos",
+      "body": "No se programa con reglas. Aprende de millones de ejemplos.",
+      "duration": 3
+    },
+    {
+      "type": "highlight",
+      "text": "Como tú aprendes a distinguir un gato de un perro viéndolos muchas veces",
+      "duration": 2.5
+    },
+    {
+      "type": "concept",
+      "emoji": "⚡",
+      "headline": "Ya la usas a diario",
+      "body": "Spotify, Google Maps, Instagram… todos usan IA.",
+      "duration": 3
+    },
+    {
+      "type": "outro",
+      "cta": "Sígueme para aprender más sobre IA 🚀",
+      "duration": 2
+    }
+  ]
+}
